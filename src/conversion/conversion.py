@@ -83,8 +83,10 @@ class Conversion:
             decimal_a_binario(10) -> "1010"
             decimal_a_binario(255) -> "11111111"
         """
-        pass
-    
+        if decimal == 0:
+            return "0"
+        return bin(decimal)[2:]
+
     def binario_a_decimal(self, binario):
         """
         Convierte un número binario a decimal.
@@ -99,8 +101,8 @@ class Conversion:
             binario_a_decimal("1010") -> 10
             binario_a_decimal("11111111") -> 255
         """
-        pass
-    
+        return int(binario, 2)
+
     def decimal_a_romano(self, numero):
         """
         Convierte un número decimal a numeración romana.
@@ -115,8 +117,33 @@ class Conversion:
             decimal_a_romano(9) -> "IX"
             decimal_a_romano(1994) -> "MCMXCIV"
         """
-        pass
-    
+        if not (1 <= numero <= 3999):
+            return "Número fuera de rango"
+
+        valores = [
+            (1000, "M"),
+            (900, "CM"),
+            (500, "D"),
+            (400, "CD"),
+            (100, "C"),
+            (90, "XC"),
+            (50, "L"),
+            (40, "XL"),
+            (10, "X"),
+            (9, "IX"),
+            (5, "V"),
+            (4, "IV"),
+            (1, "I"),
+        ]
+
+        resultado = ""
+        for valor, simbolo in valores:
+            while numero >= valor:
+                resultado += simbolo
+                numero -= valor
+
+        return resultado
+
     def romano_a_decimal(self, romano):
         """
         Convierte un número romano a decimal.
@@ -131,7 +158,27 @@ class Conversion:
             romano_a_decimal("IX") -> 9
             romano_a_decimal("MCMXCIV") -> 1994
         """
-        pass
+        valores = {
+            "I": 1,
+            "V": 5,
+            "X": 10,
+            "L": 50,
+            "C": 100,
+            "D": 500,
+            "M": 1000,
+        }
+
+        total = 0
+        prev = 0
+        for char in reversed(romano):
+            valor = valores.get(char, 0)
+            if valor < prev:
+                total -= valor
+            else:
+                total += valor
+            prev = valor
+
+        return total
     
     def texto_a_morse(self, texto):
         """
