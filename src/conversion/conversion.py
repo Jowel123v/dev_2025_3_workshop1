@@ -11,12 +11,12 @@ class Conversion:
             
         Fórmula: F = (C × 9/5) + 32
         
-        Ejemplo:
+        Ejemplo:        
             celsius_a_fahrenheit(0) -> 32.0
             celsius_a_fahrenheit(100) -> 212.0
         """
-        pass
-    
+        return (celsius * 9/5) + 32         
+
     def fahrenheit_a_celsius(self, fahrenheit):
         """
         Convierte temperatura de Fahrenheit a Celsius.
@@ -33,8 +33,8 @@ class Conversion:
             fahrenheit_a_celsius(32) -> 0.0
             fahrenheit_a_celsius(212) -> 100.0
         """
-        pass
-    
+        return (fahrenheit - 32) * 5/9
+
     def metros_a_pies(self, metros):
         """
         Convierte distancia de metros a pies.
@@ -51,7 +51,7 @@ class Conversion:
             metros_a_pies(1) -> 3.28084
         """
         pass
-    
+
     def pies_a_metros(self, pies):
         """
         Convierte distancia de pies a metros.
@@ -68,7 +68,7 @@ class Conversion:
             pies_a_metros(3.28084) -> 1.0
         """
         pass
-    
+
     def decimal_a_binario(self, decimal):
         """
         Convierte un número decimal a su representación binaria.
