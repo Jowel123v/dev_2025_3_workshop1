@@ -135,8 +135,8 @@ class Geometria:
         Returns:
             float: Área del pentágono regular
         """
-        pass
-    
+        return (5 * lado * apotema) / 2
+
     def perimetro_pentagono_regular(self, lado):
         """
         Calcula el perímetro de un pentágono regular.
@@ -147,7 +147,7 @@ class Geometria:
         Returns:
             float: Perímetro del pentágono regular
         """
-        pass
+        return 5 * lado
     
     def area_hexagono_regular(self, lado, apotema):
         """
@@ -160,7 +160,7 @@ class Geometria:
         Returns:
             float: Área del hexágono regular
         """
-        pass
+        return (6 * lado * apotema) / 2
     
     def perimetro_hexagono_regular(self, lado):
         """
@@ -172,7 +172,7 @@ class Geometria:
         Returns:
             float: Perímetro del hexágono regular
         """
-        pass
+        return 6 * lado
     
     def volumen_cubo(self, lado):
         """
