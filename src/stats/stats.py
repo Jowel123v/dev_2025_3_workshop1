@@ -12,7 +12,7 @@ class Stats:
         Ejemplo:
             promedio([1, 2, 3, 4, 5]) -> 3.0
         """
-        pass
+        return sum(numeros) / len(numeros) if numeros else 0.0
     
     def mediana(self, numeros):
         """
@@ -29,8 +29,16 @@ class Stats:
             mediana([1, 2, 3, 4, 5]) -> 3.0
             mediana([1, 2, 3, 4]) -> 2.5
         """
-        pass
-    
+        if not numeros:
+            return 0.0
+        datos_ordenados = sorted(numeros)
+        n = len(datos_ordenados)
+        medio = n // 2
+        if n % 2 == 1:
+            return datos_ordenados[medio]
+        else:
+            return (datos_ordenados[medio - 1] + datos_ordenados[medio]) / 2
+
     def moda(self, numeros):
         """
         Encuentra el valor que aparece con mayor frecuencia en la lista.
