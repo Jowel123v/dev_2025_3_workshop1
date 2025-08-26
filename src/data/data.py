@@ -87,7 +87,9 @@ class Data:
         Returns:
             int: El número que falta en la secuencia
         """
-        pass
+        for i in range (len(lista)+1):
+          if i+1 not in lista:
+            return i+1
     
     def es_subconjunto(self, conjunto1, conjunto2):
         """
@@ -100,8 +102,11 @@ class Data:
         Returns:
             bool: True si conjunto1 es subconjunto de conjunto2, False en caso contrario
         """
-        pass
-    
+        for elemento in conjunto1:
+            if elemento not in conjunto2:
+                return False
+        return True
+
     def implementar_pila(self):
         """
         Implementa una estructura de datos tipo pila (stack) usando listas.
