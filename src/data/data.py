@@ -180,6 +180,8 @@ class Data:
         Returns:
             list: Matriz transpuesta
         """
+        if not matriz:
+         return []
         matriz_transpuesta = []
         for i in range(len(matriz[0])):
             fila = []
