@@ -106,7 +106,7 @@ class Strings:
         Returns:
             str: Cadena con la primera letra de cada palabra en mayúscula
         """
-        pass
+        return texto.title()    
     
     def eliminar_espacios_duplicados(self, texto):
         """
@@ -117,9 +117,21 @@ class Strings:
             
         Returns:
             str: Cadena sin espacios duplicados
-        """
-        pass
-    
+        """ 
+        resultado = []
+        espacio_prev = False
+
+        for ch in texto:
+            if ch == " ":
+                if not espacio_prev:      
+                    resultado.append(ch)
+                espacio_prev = True
+            else:
+                resultado.append(ch)
+                espacio_prev = False      
+
+        return "".join(resultado)
+
     def es_numero_entero(self, texto):
         """
         Verifica si una cadena representa un número entero sin usar isdigit().
@@ -131,7 +143,7 @@ class Strings:
             bool: True si la cadena representa un número entero, False en caso contrario
         """
         pass
-    
+
     def cifrar_cesar(self, texto, desplazamiento):
         """
         Aplica el cifrado César a una cadena de texto.
