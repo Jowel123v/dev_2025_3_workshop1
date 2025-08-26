@@ -46,7 +46,7 @@ class Strings:
         vocales = "aeiouAEIOU"
         for letra in texto:
             if letra in vocales:
-                contador += 1
+                contador = contador + 1
         return contador
     
     def contar_consonantes(self, texto):
@@ -59,8 +59,13 @@ class Strings:
         Returns:
             int: Número de consonantes en la cadena
         """
-        pass
-    
+        contador = 0
+        consonantes = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"
+        for letra in texto:
+            if letra in consonantes:
+                contador = contador + 1 
+        return contador
+
     def es_anagrama(self, texto1, texto2):
         """
         Verifica si dos cadenas son anagramas (contienen exactamente los mismos caracteres).
@@ -72,8 +77,10 @@ class Strings:
         Returns:
             bool: True si son anagramas, False en caso contrario
         """
-        pass
-    
+        texto1 = texto1.replace(" ", "").lower()
+        texto2 = texto2.replace(" ", "").lower()
+        return sorted(texto1) == sorted(texto2)
+
     def contar_palabras(self, texto):
         """
         Cuenta el número de palabras en una cadena.
@@ -84,8 +91,11 @@ class Strings:
         Returns:
             int: Número de palabras en la cadena
         """
-        pass
-    
+        if not texto.strip():
+            return 0
+        palabras = texto.split()
+        return len(palabras)
+
     def palabras_mayus(self, texto):
         """
         Pon en Mayuscula la primera letra de cada palabra en una cadena.
