@@ -14,8 +14,9 @@ class Strings:
         Returns:
             bool: True si es palíndromo, False en caso contrario
         """
-        pass
-    
+        texto = texto.replace(" ", "").lower()
+        return texto == texto[::-1]
+
     def invertir_cadena(self, texto):
         """
         Invierte una cadena de texto sin usar slicing ni reversed().
@@ -26,8 +27,11 @@ class Strings:
         Returns:
             str: Cadena invertida
         """
-        pass
-    
+        invertida = ""
+        for letra in texto:
+            invertida = letra + invertida
+        return invertida
+
     def contar_vocales(self, texto):
         """
         Cuenta el número de vocales en una cadena.
@@ -38,7 +42,12 @@ class Strings:
         Returns:
             int: Número de vocales en la cadena
         """
-        pass
+        contador = 0
+        vocales = "aeiouAEIOU"
+        for letra in texto:
+            if letra in vocales:
+                contador += 1
+        return contador
     
     def contar_consonantes(self, texto):
         """
