@@ -47,7 +47,7 @@ class Data:
             list: Lista sin elementos duplicados
         """
         pass
-    
+
     def merge_ordenado(self, lista1, lista2):
         """
         Combina dos listas ordenadas en una sola lista ordenada.
@@ -59,8 +59,8 @@ class Data:
         Returns:
             list: Lista combinada y ordenada
         """
-        pass
-    
+        return sorted(lista1 + lista2)
+
     def rotar_lista(self, lista, k):
         """
         Rota los elementos de una lista k posiciones a la derecha.
@@ -72,8 +72,11 @@ class Data:
         Returns:
             list: Lista rotada
         """
-        pass
-    
+        if not lista:
+            return []
+        k = k % len(lista)  
+        return lista[-k:] + lista[:-k]
+
     def encuentra_numero_faltante(self, lista):
         """
         Encuentra el número faltante en una lista de enteros del 1 al n.
