@@ -142,7 +142,14 @@ class Strings:
         Returns:
             bool: True si la cadena representa un número entero, False en caso contrario
         """
-        pass
+        if not texto:
+            return False
+        if texto[0] == "-":
+            texto = texto[1:]
+        for ch in texto:
+            if not ch.isdigit():
+                return False
+        return True
 
     def cifrar_cesar(self, texto, desplazamiento):
         """
@@ -155,6 +162,7 @@ class Strings:
         Returns:
             str: Cadena cifrada
         """
+        
         pass
     
     def descifrar_cesar(self, texto, desplazamiento):
@@ -168,7 +176,7 @@ class Strings:
         Returns:
             str: Cadena descifrada
         """
-        pass
+        pass    
     
     def encontrar_subcadena(self, texto, subcadena):
         """
@@ -181,4 +189,12 @@ class Strings:
         Returns:
             list: Lista con las posiciones iniciales de cada ocurrencia
         """
-        pass
+        if subcadena == "":
+            return []
+
+        posiciones = []
+        longitud_subcadena = len(subcadena)
+        for i in range(len(texto) - longitud_subcadena + 1):
+            if texto[i:i + longitud_subcadena] == subcadena:
+                posiciones.append(i)
+        return posiciones
