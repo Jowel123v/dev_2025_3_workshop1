@@ -15,6 +15,13 @@ class Games:
             - Tijera vence a papel
             - Papel vence a piedra
         """
+        jugador1 = str(jugador1).strip().lower()
+        jugador2 = str(jugador2).strip().lower()
+
+        validos = {"piedra", "papel", "tijera"}
+        if jugador1 not in validos or jugador2 not in validos:
+         return "invalid"
+
         if jugador1 == jugador2:
             return "empate"
         elif (jugador1 == "piedra" and jugador2 == "tijera") or \
@@ -35,7 +42,12 @@ class Games:
         Returns:
             str: "correcto", "muy alto" o "muy bajo"
         """
-        pass
+        if intento == numero_secreto:
+            return "correcto"
+        elif intento < numero_secreto:
+            return "muy bajo"
+        else:
+            return "muy alto"
     
     def ta_te_ti_ganador(self, tablero):
         """
@@ -52,7 +64,19 @@ class Games:
              ["O", "O", " "],
              [" ", " ", " "]] -> "X"
         """
-        pass
+        filas = tablero
+        columnas = [[tablero[r][c] for r in range(3)] for c in range(3)]
+        diagonal = [
+            [tablero[i][i] for i in range(3)],
+            [tablero[i][2 - i] for i in range(3)]
+        ]
+        lineas = filas + columnas + diagonal
+
+        for i in ("X", "O"):
+            if any(all(c == i for c in linea) for linea in lineas):
+                return i
+        espacios = any(" " in fila for fila in tablero)
+        return "continua" if espacios else "empate"
     
     def generar_combinacion_mastermind(self, longitud, colores_disponibles):
         """
@@ -70,7 +94,7 @@ class Games:
             -> ["rojo", "azul", "rojo", "verde"]
         """
         pass
-    
+
     def validar_movimiento_torre_ajedrez(self, desde_fila, desde_col, hasta_fila, hasta_col, tablero):
         """
         Valida si un movimiento de torre en ajedrez es legal.
