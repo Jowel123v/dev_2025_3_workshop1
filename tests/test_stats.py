@@ -116,3 +116,4 @@ class TestStats:
         assert self.stats.rango([]) == 0
         # Test con números grandes
         assert self.stats.rango([1000, 5000, 2000, 8000]) == 7000
+
