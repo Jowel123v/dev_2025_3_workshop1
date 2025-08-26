@@ -208,7 +208,7 @@ class Geometria:
         Returns:
             float: Volumen de la esfera
         """
-        pass
+        return (4/3) * 3.1416 * radio**3 
     
     def area_superficie_esfera(self, radio):
         """
@@ -220,8 +220,8 @@ class Geometria:
         Returns:
             float: Área de la superficie de la esfera
         """
-        pass
-    
+        return 4 * 3.1416 * radio**2
+
     def volumen_cilindro(self, radio, altura):
         """
         Calcula el volumen de un cilindro.
@@ -320,7 +320,12 @@ class Geometria:
         Returns:
             float: Área del polígono regular
         """
-        pass
+        if not isinstance(n, int) or n < 3:
+            raise ValueError("n debe ser entero ≥ 3")
+        if lado <= 0 or apotema <= 0:
+            raise ValueError("lado y apotema deben ser > 0")
+        perimetro = n * lado
+        return (perimetro * apotema) / 2 
     
     def perimetro_poligono_regular(self, num_lados, lado):
         """
