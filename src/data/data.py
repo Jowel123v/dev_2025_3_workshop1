@@ -114,8 +114,30 @@ class Data:
         Returns:
             dict: Diccionario con métodos push, pop, peek y is_empty
         """
-        pass
-    
+        pila = []
+        def push(elemento):
+            pila.append(elemento)
+
+        def pop():
+            if not vacio():
+                return pila.pop()
+            return None
+
+        def peek():
+            if not vacio():
+                return pila[-1]
+            return None
+
+        def vacio():
+            return len(pila) == 0
+
+        return {
+            "push": push,
+            "pop": pop,
+            "peek": peek,
+            "is_empty": vacio   
+        }
+
     def implementar_cola(self):
         """
         Implementa una estructura de datos tipo cola (queue) usando listas.
@@ -123,8 +145,31 @@ class Data:
         Returns:
             dict: Diccionario con métodos enqueue, dequeue, peek y is_empty
         """
-        pass
-    
+        cola = []
+
+        def enqueue(elemento):
+            cola.append(elemento)
+
+        def dequeue():
+            if not vacio():
+                return cola.pop(0)
+            return None
+
+        def peek():
+            if not vacio():
+                return cola[0]
+            return None
+
+        def vacio():
+            return len(cola) == 0
+
+        return {
+            "enqueue": enqueue,
+            "dequeue": dequeue,
+            "peek": peek,
+            "is_empty": vacio
+        }
+
     def matriz_transpuesta(self, matriz):
         """
         Calcula la transpuesta de una matriz.
