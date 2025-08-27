@@ -14,14 +14,12 @@ class Magic:
         Returns:
             int: El n-ésimo número de Fibonacci
         """
-        if not isinstance(n, int) or n < 0:
+        if n < 0:
             return None
-        sec = []
         a, b = 0, 1
-        for _ in range(n):
-            sec.append(a)
+        for i in range(n):
             a, b = b, a + b
-        return sec
+        return a
 
     def secuencia_fibonacci(self, n):
         """
@@ -33,8 +31,15 @@ class Magic:
         Returns:
             list: Lista con los primeros n números de Fibonacci
         """
-        return [self.fibonacci(i) for i in range(n)]
-    
+        if n < 0:
+            return None
+        secuencia = []
+        a, b = 0, 1
+        for i in range(n):
+            secuencia.append(a)
+            a, b = b, a + b
+        return secuencia
+
     def es_primo(self, n):
         """
         Verifica si un número es primo.
@@ -62,11 +67,7 @@ class Magic:
         Returns:
             list: Lista de números primos hasta n
         """
-        lista_primos = []
-        for i in range(2, n + 1):
-            if self.es_primo(i):
-                lista_primos.append(i)
-        return lista_primos
+        pass
 
     def es_numero_perfecto(self, n):
         """
@@ -78,7 +79,7 @@ class Magic:
         Returns:
             bool: True si n es un número perfecto, False en caso contrario
         """
-        pass
+        pass    
     
     def triangulo_pascal(self, filas):
         """
@@ -116,7 +117,7 @@ class Magic:
             int: El máximo común divisor de a y b
         """
         pass
-    
+
     def mcm(self, a, b):
         """
         Calcula el mínimo común múltiplo de dos números.
@@ -129,7 +130,7 @@ class Magic:
             int: El mínimo común múltiplo de a y b
         """
         pass
-    
+
     def suma_digitos(self, n):
         """
         Calcula la suma de los dígitos de un número.
@@ -152,8 +153,8 @@ class Magic:
         Returns:
             bool: True si n es un número de Armstrong, False en caso contrario
         """
-        pass
-    
+        pass   
+
     def es_cuadrado_magico(self, matriz):
         """
         Verifica si una matriz es un cuadrado mágico (suma igual en filas, columnas y diagonales).
