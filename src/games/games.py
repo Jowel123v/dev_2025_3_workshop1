@@ -93,7 +93,11 @@ class Games:
             generar_combinacion_mastermind(4, ["rojo", "azul", "verde"]) 
             -> ["rojo", "azul", "rojo", "verde"]
         """
-        pass
+        colores = []
+        n = len(colores_disponibles)
+        for i in range(longitud):
+            colores.append(colores_disponibles[i % n])
+        return colores
 
     def validar_movimiento_torre_ajedrez(self, desde_fila, desde_col, hasta_fila, hasta_col, tablero):
         """
@@ -113,4 +117,25 @@ class Games:
             - La torre se mueve horizontal o verticalmente
             - No puede saltar sobre otras piezas
         """
-        pass
+        for v in (desde_fila, desde_col, hasta_fila, hasta_col):
+            if v < 0 or v > 7:
+                return False
+        if desde_fila == hasta_fila and desde_col == hasta_col:
+            return False
+        if not (desde_fila == hasta_fila or desde_col == hasta_col):
+            return False
+
+        def vacia(celda):
+            return celda is None or (isinstance(celda, str) and celda.strip() == "")
+
+        if desde_fila == hasta_fila:
+            paso = 1 if hasta_col > desde_col else -1
+            for c in range(desde_col + paso, hasta_col, paso):
+                if not vacia(tablero[desde_fila][c]):
+                    return False
+        else:
+            paso = 1 if hasta_fila > desde_fila else -1
+            for f in range(desde_fila + paso, hasta_fila, paso):
+                if not vacia(tablero[f][desde_col]):
+                    return False
+        return True
