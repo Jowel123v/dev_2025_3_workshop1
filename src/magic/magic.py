@@ -14,8 +14,15 @@ class Magic:
         Returns:
             int: El n-ésimo número de Fibonacci
         """
-        pass
-    
+        if not isinstance(n, int) or n < 0:
+            return None
+        sec = []
+        a, b = 0, 1
+        for _ in range(n):
+            sec.append(a)
+            a, b = b, a + b
+        return sec
+
     def secuencia_fibonacci(self, n):
         """
         Genera los primeros n números de la secuencia de Fibonacci.
@@ -26,7 +33,7 @@ class Magic:
         Returns:
             list: Lista con los primeros n números de Fibonacci
         """
-        pass
+        return [self.fibonacci(i) for i in range(n)]
     
     def es_primo(self, n):
         """
@@ -38,7 +45,12 @@ class Magic:
         Returns:
             bool: True si n es primo, False en caso contrario
         """
-        pass
+        if n <= 1:
+            return False
+        for i in range(2, int(n**0.5) + 1):
+            if n % i == 0:
+                return False
+        return True
     
     def generar_primos(self, n):
         """
@@ -50,8 +62,12 @@ class Magic:
         Returns:
             list: Lista de números primos hasta n
         """
-        pass
-    
+        lista_primos = []
+        for i in range(2, n + 1):
+            if self.es_primo(i):
+                lista_primos.append(i)
+        return lista_primos
+
     def es_numero_perfecto(self, n):
         """
         Verifica si un número es perfecto (igual a la suma de sus divisores propios).
