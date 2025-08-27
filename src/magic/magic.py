@@ -185,4 +185,17 @@ class Magic:
         Returns:
             bool: True si es un cuadrado mágico, False en caso contrario
         """
-        pass
+        if not matriz or len(matriz) != len(matriz[0]):
+            return False
+        suma_objetivo = sum(matriz[0])
+        for fila in matriz:
+            if sum(fila) != suma_objetivo:
+                return False
+        for col in range(len(matriz[0])):
+            if sum(matriz[row][col] for row in range(len(matriz))) != suma_objetivo:
+                return False
+        if sum(matriz[i][i] for i in range(len(matriz))) != suma_objetivo:
+            return False
+        if sum(matriz[i][len(matriz) - 1 - i] for i in range(len(matriz))) != suma_objetivo:
+            return False
+        return True
