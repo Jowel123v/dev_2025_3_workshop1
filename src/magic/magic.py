@@ -67,7 +67,11 @@ class Magic:
         Returns:
             list: Lista de números primos hasta n
         """
-        pass
+        lista_primos = []
+        for i in range(2, n + 1):
+            if self.es_primo(i):
+                lista_primos.append(i)
+        return lista_primos
 
     def es_numero_perfecto(self, n):
         """
@@ -79,8 +83,11 @@ class Magic:
         Returns:
             bool: True si n es un número perfecto, False en caso contrario
         """
-        pass    
-    
+        if n < 2:
+            return False
+        suma = sum(i for i in range(1, n) if n % i == 0)
+        return suma == n
+
     def triangulo_pascal(self, filas):
         """
         Genera las primeras n filas del triángulo de Pascal.
