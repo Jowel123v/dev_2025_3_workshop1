@@ -98,8 +98,17 @@ class Magic:
         Returns:
             list: Lista de listas que representa el triángulo de Pascal
         """
-        pass
-    
+        if filas < 1:
+            return []
+        triangulo = [[1]]
+        for i in range(1, filas):
+            fila = [1]
+            for j in range(1, i):
+                fila.append(triangulo[i - 1][j - 1] + triangulo[i - 1][j])
+            fila.append(1)
+            triangulo.append(fila)
+        return triangulo
+
     def factorial(self, n):
         """
         Calcula el factorial de un número.
@@ -110,7 +119,7 @@ class Magic:
         Returns:
             int: El factorial de n
         """
-        pass
+        return 1 if n == 0 else n * self.factorial(n - 1)
     
     def mcd(self, a, b):
         """
@@ -123,7 +132,9 @@ class Magic:
         Returns:
             int: El máximo común divisor de a y b
         """
-        pass
+        while b:
+            a, b = b, a % b
+        return a
 
     def mcm(self, a, b):
         """
